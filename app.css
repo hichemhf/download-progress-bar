@@ -24,7 +24,7 @@ body {
 .download-progress-bar__container {
     margin: 1.3rem 0;
     width: 24rem;
-    height: 2rem;
+    height: 3rem;
     background-color: rgb(5, 6, 6);
     border-radius: 1.3rem;
     box-shadow: 0 0 4rem 4rem rgba(255, 255, 255, 0.15);

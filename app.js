@@ -1,5 +1,8 @@
 const fileToDownloaded = "assets.zip";
 const startDownloadElem = document.getElementById("startDownload");
+const downloadProgressBar = document.getElementsByClassName(
+  "download-progress-bar__progress"
+);
 
 startDownloadElem.addEventListener("click", () => {
   console.log("Download Started");
@@ -10,7 +13,7 @@ startDownloadElem.addEventListener("click", () => {
       const totalSize = Number(response.headers.get("content-length"));
       console.log(totalSize);
       let totalSizeDownloaded = 0;
-
+      console.log(downloadProgressBar);
       function readData() {
         return reader.read().then((result) => {
           //result.done
@@ -21,6 +24,8 @@ startDownloadElem.addEventListener("click", () => {
               (totalSizeDownloaded / totalSize) * 100
             );
             console.log(`${totalSizeDownloaded}/${totalSize} (${percentage}%)`);
+            downloadProgressBar[0].style.width = `${percentage}%`;
+            downloadProgressBar[0].innerText = `${totalSizeDownloaded}/${totalSize} (${percentage}%)`;
           }
 
           if (!result.done) {
