@@ -8,7 +8,7 @@ startDownloadElem.addEventListener("click", () => {
   console.log("Download Started");
   startDownloadElem.setAttribute("disabled", "true");
   const dataChunks = [];
-  fetch(`/${fileToDownload}`)
+  fetch(`./${fileToDownload}`)
     .then((response) => {
       const reader = response.body.getReader();
       const totalSize = Number(response.headers.get("content-length"));
@@ -39,7 +39,7 @@ startDownloadElem.addEventListener("click", () => {
       return readData();
     })
     .then(() => {
-      console.log("download finshed");
+      console.log("Download finshed");
       const downloadAnchor = document.createElement("a");
       const blob = new Blob(dataChunks);
       downloadAnchor.href = URL.createObjectURL(blob);
